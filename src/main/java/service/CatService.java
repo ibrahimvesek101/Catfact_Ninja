@@ -4,7 +4,7 @@ import io.restassured.response.Response;
 import static io.restassured.RestAssured.given;
 
 
-public class CatFactsService {
+public class CatService {
     private static final String BASE_URL = "https://catfact.ninja";
 
     public Response getBreeds(int limit) {
