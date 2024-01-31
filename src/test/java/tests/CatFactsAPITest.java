@@ -35,7 +35,6 @@ public class CatFactsAPITest {
                 .statusCode(200)
                 .body("size()", equalTo(13));
         LoggerUtil.LOGGER.info("Response: " + response.prettyPrint());
-
     }
 
     // sonrası yeni yazılanlar;

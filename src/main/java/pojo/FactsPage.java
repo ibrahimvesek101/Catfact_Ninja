@@ -1,6 +1,6 @@
 package pojo;
 
-public class CatFact {
+public class FactsPage {
     private String fact;
     private int length;
 

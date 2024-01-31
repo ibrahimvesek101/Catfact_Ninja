@@ -1,6 +1,6 @@
 package pojo;
 
-public class Breed {
+public class BreedsPage {
     private String breed;
     private String country;
     private String origin;
