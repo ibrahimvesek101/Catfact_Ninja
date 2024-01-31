@@ -1,9 +1,8 @@
 package service;
 
-
 import io.restassured.response.Response;
-
 import static io.restassured.RestAssured.given;
+
 
 public class CatFactsService {
     private static final String BASE_URL = "https://catfact.ninja";

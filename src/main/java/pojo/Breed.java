@@ -1,4 +1,4 @@
-package model;
+package pojo;
 
 public class Breed {
     private String breed;
@@ -7,7 +7,8 @@ public class Breed {
     private String coat;
     private String pattern;
 
-    // getter setter ekliyoruz:
+
+
 
     public String getBreed() {
         return breed;

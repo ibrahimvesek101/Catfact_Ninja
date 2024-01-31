@@ -1,10 +1,11 @@
-package model;
+package pojo;
 
 public class CatFact {
     private String fact;
     private int length;
 
-    // getters and setters ekliyoruz:
+
+
 
 
     public String getFact() {

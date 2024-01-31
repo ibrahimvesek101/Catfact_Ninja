@@ -1,0 +1,4 @@
+18:13:25.158 [main] INFO  util.LoggerUtil - Response: {
+    "fact": "A cat can jump 5 times as high as it is tall.",
+    "length": 45
+}
