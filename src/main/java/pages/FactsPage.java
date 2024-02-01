@@ -1,10 +1,8 @@
-package pojo;
+package pages;
 
 public class FactsPage {
     private String fact;
     private int length;
-
-
 
 
 

@@ -2,6 +2,7 @@ package tests;
 
 import io.restassured.response.Response;
 import org.junit.Test;
+import org.testng.Assert;
 import service.CatService;
 import util.LoggerUtil;
 import static org.hamcrest.Matchers.equalTo;
@@ -20,18 +21,48 @@ public class CatFactsAPITest {
         LoggerUtil.LOGGER.info("Response: " + response.prettyPrint());
 
         LoggerUtil.LOGGER.info("testGetBreeds bitti...");
-
     }
+
+    @Test
+    public void testGetFirstBreedNameVerify() {
+        LoggerUtil.LOGGER.info("testGetBreeds başladı...");
+
+        Response response = catService.getBreeds(13);
+        response.then().statusCode(200);
+
+        String firstBreedName = response.jsonPath().getString("data[0].breed");
+        Assert.assertEquals(firstBreedName, "Abyssinian");
+
+        LoggerUtil.LOGGER.info("Response: " + response.prettyPrint());
+        LoggerUtil.LOGGER.info("testGetBreeds bitti...");
+    }
+
 
     @Test
     public void testGetRandomFact() {
         LoggerUtil.LOGGER.info("testGetRandomFact başladı...");
 
-        Response response = catService.getRandomFact(50);
+        Response response = catService.getRandomFact(911);
         response.then()
                 .statusCode(200);
-        LoggerUtil.LOGGER.info("Response: " + response.prettyPrint());
 
+        LoggerUtil.LOGGER.info("Response: " + response.prettyPrint());
+        LoggerUtil.LOGGER.info("testGetRandomFact bitti...");
+
+    }
+
+    @Test
+    public void testRandomFactNotEmpty() {
+        LoggerUtil.LOGGER.info("testGetRandomFact başladı...");
+
+        Response response = catService.getRandomFact(911);
+        response.then()
+                .statusCode(200);
+
+        String fact = response.jsonPath().getString("fact");
+        Assert.assertFalse(fact.isEmpty());
+
+        LoggerUtil.LOGGER.info("Response: " + response.prettyPrint());
         LoggerUtil.LOGGER.info("testGetRandomFact bitti...");
 
     }
@@ -40,14 +71,13 @@ public class CatFactsAPITest {
     public void testGetFacts() {
         LoggerUtil.LOGGER.info("testGetFacts başladı...");
 
-        Response response = catService.getFacts(50, 13);
+        Response response = catService.getFacts(50, 4);
         response.then()
                 .statusCode(200)
-                .body("size()", equalTo(13));
+                .body("data.size()", equalTo(4));
+
         LoggerUtil.LOGGER.info("Response: " + response.prettyPrint());
-
         LoggerUtil.LOGGER.info("testGetFacts bitti...");
-
     }
 
-  }
+}

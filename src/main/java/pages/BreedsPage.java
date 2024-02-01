@@ -1,4 +1,4 @@
-package pojo;
+package pages;
 
 public class BreedsPage {
     private String breed;
