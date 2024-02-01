@@ -25,16 +25,16 @@ public class CatFactsAPITest {
 
     @Test
     public void testGetFirstBreedNameVerify() {
-        LoggerUtil.LOGGER.info("testGetBreeds başladı...");
+        LoggerUtil.LOGGER.info("testGetFirstBreedNameVerify başladı...");
 
-        Response response = catService.getBreeds(13);
+        Response response = catService.getBreeds(14);
         response.then().statusCode(200);
 
         String firstBreedName = response.jsonPath().getString("data[0].breed");
         Assert.assertEquals(firstBreedName, "Abyssinian");
 
         LoggerUtil.LOGGER.info("Response: " + response.prettyPrint());
-        LoggerUtil.LOGGER.info("testGetBreeds bitti...");
+        LoggerUtil.LOGGER.info("testGetFirstBreedNameVerify bitti...");
     }
 
 
@@ -53,9 +53,9 @@ public class CatFactsAPITest {
 
     @Test
     public void testRandomFactNotEmpty() {
-        LoggerUtil.LOGGER.info("testGetRandomFact başladı...");
+        LoggerUtil.LOGGER.info("testRandomFactNotEmpty başladı...");
 
-        Response response = catService.getRandomFact(911);
+        Response response = catService.getRandomFact(112);
         response.then()
                 .statusCode(200);
 
@@ -63,7 +63,7 @@ public class CatFactsAPITest {
         Assert.assertFalse(fact.isEmpty());
 
         LoggerUtil.LOGGER.info("Response: " + response.prettyPrint());
-        LoggerUtil.LOGGER.info("testGetRandomFact bitti...");
+        LoggerUtil.LOGGER.info("testRandomFactNotEmpty bitti...");
 
     }
 
@@ -78,6 +78,18 @@ public class CatFactsAPITest {
 
         LoggerUtil.LOGGER.info("Response: " + response.prettyPrint());
         LoggerUtil.LOGGER.info("testGetFacts bitti...");
+    }
+
+    @Test
+    public void testGetFactsContentTypeVerify() {
+        LoggerUtil.LOGGER.info("testGetFactsContentTypeVerify başladı...");
+
+        Response response = catService.getFacts(50, 7);
+        response.then()
+                .statusCode(200).header("Content-Type", "application/json");
+
+        LoggerUtil.LOGGER.info("Response: " + response.prettyPrint());
+        LoggerUtil.LOGGER.info("testGetFactsContentTypeVerify bitti...");
     }
 
 }
