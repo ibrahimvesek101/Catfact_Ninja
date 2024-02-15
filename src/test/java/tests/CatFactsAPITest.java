@@ -10,6 +10,9 @@ import static org.hamcrest.Matchers.equalTo;
 public class CatFactsAPITest {
     private CatService catService = new CatService();
 
+    // mylogfile.log dosyasına logların kaydedilmesi için;
+    //  log4j2.xml de yorum satırını açabiliriz...
+
     @Test
     public void testGetBreeds() {
         LoggerUtil.LOGGER.info("testGetBreeds başladı...");
